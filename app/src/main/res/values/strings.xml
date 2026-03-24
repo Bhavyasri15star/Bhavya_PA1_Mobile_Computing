@@ -18,4 +18,37 @@
     <string name="task_description">Task Description</string>
     <string name="priority">Priority</string>
     <string name="mark_complete">Mark Complete</string>
+    <string-array name="task_titles">
+        <item>Assignment Submission</item>
+        <item>Attend Lecture</item>
+        <item>Group Meeting</item>
+        <item>Lab Work</item>
+        <item>Project Research</item>
+        <item>Exam Preparation</item>
+        <item>Library Study</item>
+        <item>Presentation Practice</item>
+    </string-array>
+
+    <string-array name="task_descriptions">
+        <item>Submit assignment before deadline</item>
+        <item>Attend scheduled lecture</item>
+        <item>Meet group members</item>
+        <item>Complete lab exercises</item>
+        <item>Work on project research</item>
+        <item>Prepare for exams</item>
+        <item>Study in library</item>
+        <item>Practice presentation</item>
+    </string-array>
+
+    <string-array name="task_priorities">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Medium</item>
+        <item>High</item>
+        <item>Low</item>
+        <item>High</item>
+        <item>Low</item>
+        <item>Medium</item>
+    </string-array>
+    <string name="default_user">User</string>
 </resources>

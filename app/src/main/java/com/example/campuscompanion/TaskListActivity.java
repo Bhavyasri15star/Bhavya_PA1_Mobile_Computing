@@ -2,6 +2,7 @@ package com.example.campuscompanion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,41 +13,28 @@ public class TaskListActivity extends AppCompatActivity {
 
     ListView listView;
 
-    String[] tasks = {
-            "Assignment Submission",
-            "Attend Lecture",
-            "Group Meeting",
-            "Lab Work",
-            "Project Research",
-            "Exam Preparation",
-            "Library Study",
-            "Presentation Practice"
-    };
-
-    String[] descriptions = {
-            "Submit assignment before deadline",
-            "Attend scheduled lecture",
-            "Meet group members",
-            "Complete lab exercises",
-            "Work on project research",
-            "Prepare for exams",
-            "Study in library",
-            "Practice presentation"
-    };
-
-    String[] priorities = {
-            "High", "Medium", "Medium", "High",
-            "Low", "High", "Low", "Medium"
-    };
+    String[] tasks;
+    String[] descriptions;
+    String[] priorities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
+        Log.d("Lifecycle", "onCreate called");
+
         listView = findViewById(R.id.listViewTasks);
 
+        tasks = getResources().getStringArray(R.array.task_titles);
+        descriptions = getResources().getStringArray(R.array.task_descriptions);
+        priorities = getResources().getStringArray(R.array.task_priorities);
+
         String name = getIntent().getStringExtra("username");
+        if (name == null) {
+            name = getString(R.string.default_user);
+        }
+
         TextView tvWelcome = findViewById(R.id.tvWelcome);
         tvWelcome.setText(getString(R.string.welcome_message, name));
 
@@ -68,9 +56,16 @@ public class TaskListActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
-        android.util.Log.d("Lifecycle", "onStart called");
+        Log.d("Lifecycle", "onStart called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("Lifecycle", "onResume called");
     }
 }
