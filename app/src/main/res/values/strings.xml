@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Campus Companion</string>
+
+    <string name="app_title">Campus Companion</string>
+    <string name="enter_name_hint">Enter your name</string>
+    <string name="go_to_tasks">Go to Tasks</string>
+    <string name="enter_name_error">Please enter your name</string>
+
+    <string name="welcome_message">Welcome, %1$s</string>
+
+    <string name="task_completed">Task Completed!</string>
+    <string name="priority_label">Priority: %1$s</string>
+    <string name="task_title">Task Title</string>
+    <string name="confirm_title">Confirm</string>
+    <string name="confirm_message">Mark this task as complete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="task_description">Task Description</string>
+    <string name="priority">Priority</string>
+    <string name="mark_complete">Mark Complete</string>
+</resources>
