@@ -11,11 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TaskListActivity extends AppCompatActivity {
 
-    ListView listView;
+    private ListView listView;
+    private TextView tvWelcome;
 
-    String[] tasks;
-    String[] descriptions;
-    String[] priorities;
+    private String[] tasks;
+    private String[] descriptions;
+    private String[] priorities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,28 +25,33 @@ public class TaskListActivity extends AppCompatActivity {
 
         Log.d("Lifecycle", "onCreate called");
 
+        // Initialize views
         listView = findViewById(R.id.listViewTasks);
+        tvWelcome = findViewById(R.id.tvWelcome);
 
+        // Load data from strings.xml
         tasks = getResources().getStringArray(R.array.task_titles);
         descriptions = getResources().getStringArray(R.array.task_descriptions);
         priorities = getResources().getStringArray(R.array.task_priorities);
 
+        // Receive username from Intent
         String name = getIntent().getStringExtra("username");
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             name = getString(R.string.default_user);
         }
 
-        TextView tvWelcome = findViewById(R.id.tvWelcome);
+        // Set welcome message
         tvWelcome.setText(getString(R.string.welcome_message, name));
 
+        // Set adapter for ListView
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 tasks
         );
-
         listView.setAdapter(adapter);
 
+        // Handle item click
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(TaskListActivity.this, TaskDetailActivity.class);
 
@@ -67,5 +73,17 @@ public class TaskListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d("Lifecycle", "onResume called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("Lifecycle", "onPause called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("Lifecycle", "onStop called");
     }
 }
