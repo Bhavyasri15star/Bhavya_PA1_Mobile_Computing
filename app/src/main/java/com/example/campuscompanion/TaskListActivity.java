@@ -25,25 +25,20 @@ public class TaskListActivity extends AppCompatActivity {
 
         Log.d("Lifecycle", "onCreate called");
 
-        // Initialize views
         listView = findViewById(R.id.listViewTasks);
         tvWelcome = findViewById(R.id.tvWelcome);
 
-        // Load data from strings.xml
         tasks = getResources().getStringArray(R.array.task_titles);
         descriptions = getResources().getStringArray(R.array.task_descriptions);
         priorities = getResources().getStringArray(R.array.task_priorities);
 
-        // Receive username from Intent
         String name = getIntent().getStringExtra("username");
         if (name == null || name.isEmpty()) {
             name = getString(R.string.default_user);
         }
 
-        // Set welcome message
         tvWelcome.setText(getString(R.string.welcome_message, name));
 
-        // Set adapter for ListView
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -51,7 +46,6 @@ public class TaskListActivity extends AppCompatActivity {
         );
         listView.setAdapter(adapter);
 
-        // Handle item click
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(TaskListActivity.this, TaskDetailActivity.class);
 
